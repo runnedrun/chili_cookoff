@@ -31,12 +31,14 @@ function checkTime(){
 }
 
 function setTemp(setPoint,callback){
+	console.log("setting to", setPoint);
 	if(setPoint > currentTemperature){
 		stepTempXTimes(0,setPoint-currentTemperature,up,callback);	
 	}else if(setPoint < currentTemperature){
 		stepTempXTimes(0,currentTemperature - setPoint,down,callback);	
 	}else{
 		console.log("done!");
+		callback();
 	}
 	currentTemperature = setPoint;
 }
